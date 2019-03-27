@@ -1,5 +1,5 @@
 import abc
-from utils.syslog_util import print_me_log
+from singlecard.tools.logkeeping import print_me_log
 
 
 class MeasureInterface:

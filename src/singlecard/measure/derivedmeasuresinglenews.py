@@ -1,5 +1,5 @@
 from singlecard.contract.derivedmeasureinterface import DerivedMeasureInterface
-from utils.syslog_util import print_me_log
+from singlecard.tools.logkeeping import print_me_log
 from singlecard.config.singlecardconfig import MeasureConfig
 from singlecard.measure.measurefactory import MeasureFactory
 from singlecard.singleconstant import CalcType

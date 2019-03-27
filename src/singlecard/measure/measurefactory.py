@@ -2,7 +2,7 @@ from singlecard.contract.measurefactoryinterface import MeasureFactoryInterface
 from singlecard.singleconstant import MeasureType
 from singlecard.measure.basicmeasure import BasicMeasure
 from singlecard.measure.chartmeasure import ChartMeasure
-from utils.syslog_util import print_me_log
+from singlecard.tools.logkeeping import print_me_log
 
 
 class MeasureFactory(MeasureFactoryInterface):

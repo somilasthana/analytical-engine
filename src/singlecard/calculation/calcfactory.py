@@ -9,7 +9,7 @@ from singlecard.calculation.complexmeancalculation import ComplexMeanCalculation
 from singlecard.calculation.complexsumcalculation import ComplexSumCalculation
 from singlecard.calculation.complexmaxcalculation import ComplexMaxCalculation
 
-from utils.syslog_util import print_me_log
+from singlecard.tools.logkeeping import print_me_log
 
 
 class CalculationFactory(CalculationFactoryInterface):
