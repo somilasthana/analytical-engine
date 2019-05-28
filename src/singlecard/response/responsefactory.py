@@ -64,3 +64,21 @@ class SingleResponseFactorFactory(ResponseFactoryBase):
 
         self.df_group = self.df_group.reset_index()
 
+
+class SingleResponseWhatCauseFactory(ResponseFactoryBase):
+
+    def __init__(self, date_field_name: str, response_name_list: list, granularity_type: str, ts: pd.DataFrame, contributing_factor: list):
+        super().__init__(date_field_name, response_name_list, granularity_type, ts, SingleResponseType.SINGLE_TOTAL_RESPONSE.value, None, contributing_factor)
+
+    def query_builder(self):
+        s = SingleResponseTotalFactory(date_field_name=self.modified_date_field_name, response_name_list=[self.response_name_list[0]],
+                                       granularity_type=self.granularity_type, ts=self.ts)
+
+        df_total_measure = s.df_group
+
+        s = SingleResponseFactorFactory(date_field_name=self.modified_date_field_name, response_name_list=["Sales", "Qty"],
+                                        granularity_type="monthly", ts=self.ts, other_key=self.contributing_factor[0])
+
+        df_factor_measure = s.df_group
+
+        self.df_group = df_total_measure.merge(df_factor_measure, on=self.modified_date_field_name)

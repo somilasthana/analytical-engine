@@ -10,7 +10,7 @@ import pandas as pd
 class ResponseFactoryBase:
     __metaclass__ = abc.ABCMeta
 
-    def __init__(self, date_field_name: str, response_name_list: list, granularity_type: str, ts: pd.DataFrame, calculation_type, other_key: str=None):
+    def __init__(self, date_field_name: str, response_name_list: list, granularity_type: str, ts: pd.DataFrame, calculation_type, other_key: str=None, contributing_factor: list=None):
         self.date_field_name = date_field_name
         self.response_name_list = response_name_list
         self.granularity_type = granularity_type
@@ -19,7 +19,7 @@ class ResponseFactoryBase:
         self.calculation_type = calculation_type
         self.df_group = None
         self.modified_date_field_name = "Time_Granularity"
-
+        self.contributing_factor = contributing_factor
 
         if date_field_name is None or ts is None:
             raise Exception("date_field_name or data frame cannot be None")
